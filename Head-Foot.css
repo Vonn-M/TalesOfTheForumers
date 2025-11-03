@@ -1,0 +1,166 @@
+
+
+/* Header/Sub-Header/Navigation Code */
+
+.main-header {
+	background-image: url('PatternWeb3.png');
+	
+	background-repeat: repeat;
+	
+    background-color: #1a1a1a;
+    padding: 0px 50px;      
+    border: 0px solid transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+nav {
+    margin: auto; 
+}
+
+.banner-box {
+
+    padding: 10px 0; 
+    
+
+    width: 100%; 
+	
+	background-image: url('PatternWeb4.png');
+	
+	background-repeat: repeat;
+    
+    background-color: red; 
+    color: #333333;
+    
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	
+	position: sticky; 
+    top: 0;
+    z-index: 99;
+	
+	display: flex;
+    
+    justify-content: center; 
+    
+    align-items: center;
+}
+
+.banner-box p {
+    margin: 0; 
+}
+
+.close-btn {
+	
+	margin-left: auto;
+    margin-right: 15px;
+    
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+    color: #A11318;
+    transition: color 0.2s;
+	z-index: 100;
+}
+
+.banner-box .close-btn:hover {
+    color: #871014; 
+}
+
+@keyframes color-blink {
+
+    0% { color: #333333; }
+    50% { color: yellow; }
+    
+}
+
+marquee {
+	flex-grow: 1;      /* Allows it to take up the middle space */
+    flex-shrink: 1;    /* Allows it to shrink a little if needed */
+    flex-basis: auto;  /* Base size is calculated automatically */
+
+    /* Ensure a minimum width so it doesn't get squeezed too small */
+    min-width: 50%;
+
+    line-height: 1.1em; 
+
+animation-name: color-blink;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite; 
+    
+
+    animation-timing-function: steps(1);
+}
+.nav-links {
+	display: flex; 
+
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+    
+    padding-right: 20px;
+}
+
+.nav-links li {
+	margin-left: 20px; 
+    margin-right: 0;
+}
+
+.nav-links a {
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+/* Footer Code */
+
+.main-footer {
+    /* Set the required height */
+    height: 100px; 
+    
+
+    width: 100%; 
+    
+    /* Visual styling */
+    background-color: #222222; 
+    color: #cccccc;           
+    padding: 20px 0;           
+    
+
+    text-align: center;
+    
+
+    margin-top: 30px;
+}
+
+.main-footer p {
+    margin: 5px 0;
+}
+
+.site-width-limiter {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.header-logo img {
+    height: 60px; /* Adjust this to the size you want your logo */
+    width: auto;
+    display: block; /* Helps with alignment */
+}

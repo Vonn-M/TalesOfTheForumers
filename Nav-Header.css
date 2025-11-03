@@ -1,0 +1,40 @@
+
+
+.main-header {
+    background-color: #1a1a1a; /* Dark background */
+    padding: 15px 50px;       /* Top/Bottom and Left/Right padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Navigation Links Arrangement --- */
+.nav-links {
+    /* Flexbox to arrange list items horizontally */
+    display: flex; 
+    
+    /* Center the links horizontally inside the header */
+    justify-content: center; 
+    
+    /* Remove default list styling */
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    /* Add space between individual links */
+    margin: 0 25px;
+}
+
+.nav-links a {
+    /* Style the text links */
+    color: #ffd700; /* Gold/Yellow color for visibility */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    /* Hover effect for interactivity */
+    color: #ffffff;
+}

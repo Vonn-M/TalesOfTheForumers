@@ -1,0 +1,319 @@
+.active-nav {
+    border-bottom: 2px solid #FFD700; /* Gold underline for the active page */
+    padding-bottom: 2px;
+}
+
+.fancy-hr {
+    border: none;
+    height: 3px;
+    background-color: #333; /* Dark color */
+    background-image: linear-gradient(to right, #ccc, #333, #ccc); /* Fading effect */
+    margin: 30px 0;
+    width: 80%; /* Don't stretch across the full content box */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro-paragraph {
+    font-size: 1.15em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    padding: 10px;
+    border-left: 5px solid #FFD700; /* Gold vertical line for importance */
+    background-color: #A19392; /* Light background for contrast */
+}
+
+.unique-list {
+    list-style: disc inside;
+    padding-left: 20px;
+}
+
+.unique-list li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.story-example-placeholder {
+    padding: 15px;
+    border: 1px dashed #fff;
+    border-radius: 5px;
+    background-color: #A19392;
+}
+
+.book-entry {
+    display: flex; 
+    align-items: flex-start; /* Aligns content to the top */
+    padding: 20px 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.book-cover {
+    width: 120px; /* Fixed width for the cover */
+    height: auto;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    margin-right: 25px; 
+    flex-shrink: 0; 
+}
+
+.book-details {
+    flex-grow: 1; /* Takes up the rest of the space */
+}
+
+.book-details h2 {
+    margin-top: 0; 
+    color: #333; /* Ensuring title color is dark */
+}
+
+.book-separator {
+    /* Styles the horizontal rule between book entries */
+    border: 0;
+    height: 1px;
+    background-color: #eee; 
+    margin: 10px 0 30px;
+}
+
+/* --- Responsive Styling (For mobile views) --- */
+@media screen and (max-width: 768px) {
+    .book-entry {
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center;
+    }
+
+    .book-cover {
+        margin-right: 0; 
+        margin-bottom: 15px;
+    }
+}
+
+.collection-blurb {
+    font-style: italic;
+    margin-bottom: 25px;
+    padding: 10px 0;
+    font-size: 1.1em;
+    color: #000;
+}
+
+/* --- Chapter List Styling --- */
+.chapter-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+}
+
+.chapter-entry {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 12px;
+    /* subtle shadow for "pop" */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    /* Ensures items are stacked cleanly */
+    display: block; 
+}
+
+.chapter-entry:hover {
+    background-color: #f7f7f7; /* Light hover effect */
+    border-color: #aaa;
+}
+
+.chapter-entry a {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #0077aa; /* A strong color for the link */
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.chapter-entry a:hover {
+    text-decoration: underline;
+}
+
+.chapter-number {
+    font-weight: normal;
+    font-size: 1em;
+    color: #777;
+    margin-right: 5px;
+}
+
+.summary {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+/* --- Status Tag Styles --- */
+.status-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+}
+
+.status-tag.new {
+    background-color: #ff5722; /* Vibrant orange for "NEW" */
+}
+
+.status-tag.coming-soon {
+    background-color: #EE70FF; /* Pale Purple for "Coming Soon" */
+}
+
+.status-tag.complete {
+    background-color: #4caf50; /* Green for "Complete" */
+}
+
+.status-tag.in-planning {
+    background-color: #9e9e9e; /* Grey for "In Planning" */
+}
+
+.fancy-hr {
+    border: none;
+    height: 3px;
+    background-color: #333; 
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    margin: 30px auto;
+    width: 80%;
+}
+
+/* --- Call-to-Action (CTA) Box --- */
+.cta-box {
+    background-color: #e8f5e9; /* Light green background */
+    border: 1px solid #c8e6c9;
+    padding: 25px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.cta-box h2 {
+    color: #388e3c; /* Darker green for emphasis */
+    margin-top: 0;
+}
+
+.main-cta-button {
+    /* Style for the actual button link */
+    display: inline-block;
+    background-color: #4caf50; /* Green button color */
+    color: white;
+    padding: 12px 25px;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.2s; /* Smooth hover effect */
+}
+
+.main-cta-button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+    transform: scale(1.02); /* Slight scale for visual pop */
+}
+
+/* --- Feature Highlights (using Flexbox for layout) --- */
+.feature-highlights {
+    display: flex; /* Arranges the cards side-by-side */
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Allows cards to stack on small screens */
+}
+
+.feature-card {
+    flex: 1; /* Allows cards to take up equal space */
+    min-width: 250px; /* Ensures cards are readable */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card h3 {
+    color: #4a148c; /* A distinct color for feature titles */
+}
+
+.chapter-info {
+    /* Subtle info above the main title */
+    color: #FFEB9E;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.chapter-subtitle {
+    /* A descriptive line below the main title */
+    font-size: 1.2em;
+    font-style: italic;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.story-paragraph {
+    /* Standard paragraph style for reading */
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify; /* Helps with a professional, printed-page look */
+}
+
+/* --- Epigraph/Quote Styling --- */
+.story-epigraph {
+    font-style: italic;
+    border-left: 3px solid #E3E3E3; /* Subtle visual divider */
+    padding-left: 20px;
+    margin: 30px 0 40px 0;
+    font-size: 1.05em;
+    color: #fff;
+}
+
+.story-epigraph cite {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    margin-top: 10px;
+    color: #fff;
+}
+
+/* --- Chapter Navigation --- */
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between; /* Spreads out the links */
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.drop-cap-big:first-letter {
+    float: left; /* Pulls the letter to the left */
+    font-size: 4.5em; /* Makes it very large */
+    line-height: 0.8; /* Pulls the text up closer to the letter */
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    font-family: serif; /* Use a strong serif font for classic look */
+    color: #FFD700; /* Use your gold color for emphasis */
+}
+
+/* Clear the float after the first paragraph so the next paragraph doesn't wrap around it */
+.drop-cap-big {
+    overflow: hidden; 
+}
+
+.drop-cap:first-letter {
+    float: left; /* Pulls the letter to the left */
+    font-size: 2.8em; /* Makes it large */
+    line-height: 0.8; /* Pulls the text up closer to the letter */
+    margin-right: 0.1em;
+    margin-top: 0.15em;
+    font-family: serif; /* Use a strong serif font for classic look */
+    color: #BFA100; /* Use your gold color for emphasis */
+}
+
+.drop-cap {
+    overflow: hidden; 
+}
