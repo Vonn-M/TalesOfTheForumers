@@ -317,3 +317,59 @@
 .drop-cap {
     overflow: hidden; 
 }
+
+.like-container {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.like-btn {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.like-btn:hover {
+    background-color: #e0e0e0; /* Darker on hover */
+}
+
+.like-btn:active {
+    transform: scale(0.98); /* Little press effect */
+}
+
+.heart-icon {
+    margin-right: 5px;
+    font-size: 1.2em;
+    line-height: 1; /* Helps vertical alignment */
+}
+
+.like-counter {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #FFD700; /* Gold color to stand out */
+}
+
+.comments-section-wrapper {
+    /* Add space above the comments */
+    margin-top: 50px; 
+    padding-top: 20px;
+    border-top: 1px solid #555; /* Subtle separator line */
+}
+
+/* Style the section title */
+.comments-section-wrapper h2 {
+    color: #FFD700; /* Match your gold accent color */
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
