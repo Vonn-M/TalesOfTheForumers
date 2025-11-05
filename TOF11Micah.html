@@ -148,13 +148,12 @@
         <p>The Traveling Forumers Copyright &copy; 2025 VonnM and JackyC - Tales of the Forumers Copyright &copy; 2025 VonnM</p>
     </footer>
 	
-    <script src="Like-Button.js"></script>
-	
-	<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script> 
+
 <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
  
 <script>
-  // Your web app's Firebase configuration
+  // Your web app's Firebase configuration (PASTE YOUR CONFIG HERE)
   const firebaseConfig = {
     apiKey: "AIzaSyCHN3VMBYsoMuZgD1NL41bprKNroge8IXM",
     authDomain: "talesoftheforumerslikes.firebaseapp.com",
@@ -164,9 +163,14 @@
     appId: "1:903407290171:web:08e4c07f6154e1599d591e"
   };
 
-  // Initialize Firebase and define the 'db' variable globally
+  // Initialize Firebase App
   const app = firebase.initializeApp(firebaseConfig);
-  const db = app.firestore(); // This line requires firebase-firestore-compat.js
+
+  // Define 'db' globally using 'var' or simply by assigning it without 'let' or 'const' 
+  // outside of a function, but 'const' works if it's outside any other scope.
+  const db = app.firestore(); 
 </script>
+
+<script src="like-button.js"></script>
 </body>
 </html>
