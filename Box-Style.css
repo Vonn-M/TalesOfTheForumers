@@ -235,22 +235,22 @@
 
     /* --- General Page Containers --- */
     .page-container, .story-page-container {
-        /* Remove max-width limit and excess padding on very small screens */
         max-width: 100%;
-        padding: 0 10px; /* Smaller side padding for mobile */
-        flex-wrap: wrap; /* Allows the content and sidebars to stack vertically */
-        display: block; /* Simplifies layout to stacking */
+        /* Change padding to 0, and use padding inside the individual boxes instead */
+        padding: 0; 
+        flex-wrap: wrap; 
+        display: block; 
+        /* Add box-sizing to prevent padding from increasing the width */
+        box-sizing: border-box; 
     }
 
     /* --- Content Box --- */
     .content-box {
-        width: auto; /* Remove the fixed 690px width */
-        min-width: 100%; /* Ensure it takes full width of the container */
-        margin: 10px 0; /* Adjust vertical margin */
-        padding: 15px; /* Smaller padding inside the box */
-        /* Flex properties are no longer needed as the container is now 'display: block' */
-        flex-grow: unset; 
-        flex-shrink: unset;
+        width: 100%; 
+        min-width: 100%; 
+        margin: 10px 0; 
+        padding: 15px; /* <- This is where your padding should be */
+        box-sizing: border-box; 
     }
 
     /* --- Sidebars (Main Sidebar & Story Nav Sidebar) --- */
@@ -274,12 +274,11 @@
     }
 
     /* --- Header Navigation (Reduce padding) --- */
-    .main-header {
-        padding: 0 10px;
-    }
-    
-    /* --- Footer --- */
-    .main-footer {
-        padding: 20px 10px;
+    .main-header, .main-footer {
+        width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        /* Force the box model to include padding within the width */
+        box-sizing: border-box; 
     }
 }
