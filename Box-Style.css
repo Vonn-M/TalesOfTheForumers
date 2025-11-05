@@ -263,15 +263,16 @@
 	
     .sidebar, .story-nav-sidebar {
         width: 100%; 
-        /* Remove margin that could be pushing the edge */
-        margin-left: 0; 
-        margin-right: 0;
-        margin: 15px auto; /* Center the element vertically */
-        
-        /* Give it some breathing room inside its 100% width */
+        margin: 15px auto; 
         padding: 15px;
+        box-sizing: border-box; 
         
-        box-shadow: none; /* Remove heavy shadows on mobile */
+        height: auto !important; 
+        max-height: none; 
+        
+        /* 🚨 FIX: This removes the sticky behavior */
+        position: static !important; 
+        top: auto;
     }
     
     /* --- Sidebar Spacer (No longer needed on mobile) --- */
