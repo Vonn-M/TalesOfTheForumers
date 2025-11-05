@@ -3,7 +3,7 @@
 
 const likeButton = document.getElementById('likeButton');
 const likeCountSpan = document.getElementById('likeCount');
-const pageId = window.location.pathname.replace(/\.html/g, ''); // e.g., converts /About.html to /About
+const pageId = window.location.pathname.split('/').pop().replace(/\.html/g, '');
 
 // Key for Local Storage to prevent repeated clicks from the same user
 const likedFlagKey = pageId + '-liked';
