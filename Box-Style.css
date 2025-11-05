@@ -267,12 +267,11 @@
         padding: 15px;
         box-sizing: border-box; 
         
-        height: auto !important; 
-        max-height: none; 
-        
-        /* 🚨 FIX: This removes the sticky behavior */
         position: static !important; 
-        top: auto;
+        top: auto !important; /* Reset the position boundary */
+        
+        height: auto !important; 
+        max-height: none;
     }
     
     /* --- Sidebar Spacer (No longer needed on mobile) --- */
