@@ -259,19 +259,33 @@
         padding: 10px; /* <- This is where your padding should be */
 
     /* --- Sidebars (Main Sidebar & Story Nav Sidebar) --- */
-    .sidebar, .story-nav-sidebar {
+	
+	}
+    .sidebar {
         width: 100%; 
-        /* Remove margin that could be pushing the edge */
-        margin-left: 0; 
-        margin-right: 0;
-        margin: 15px auto; /* Center the element vertically */
-        
-        /* Give it some breathing room inside its 100% width */
+        margin: 15px auto; 
         padding: 15px;
+        box-sizing: border-box; 
         
-        box-shadow: none; /* Remove heavy shadows on mobile */
+        /* 🚨 THE CRITICAL FIX: Override the fixed desktop height! 🚨 */
+        height: auto !important; 
+        
+        position: static; 
+        max-height: none; 
     }
     
+	.story-nav-sidebar {
+        width: 100%; 
+        margin: 15px auto;
+        padding: 15px;
+        box-sizing: border-box;
+        
+        /* Ensure its height is natural */
+        height: auto !important; 
+        max-height: none; 
+        position: static;
+    }
+	
     /* --- Sidebar Spacer (No longer needed on mobile) --- */
     .spacer-div {
         display: none; /* Hide the spacer div entirely */
