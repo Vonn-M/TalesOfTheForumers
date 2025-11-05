@@ -232,6 +232,14 @@
 /* 📱 Mobile Responsiveness (Screen width <= 768px) 📱 */
 /* ======================================================= */
 @media screen and (max-width: 768px) {
+	
+	.page-container, 
+    .story-page-container,
+    .content-box,
+    .sidebar,
+    .story-nav-sidebar {
+        box-sizing: border-box; 
+    }
 
     /* --- General Page Containers --- */
     .page-container, .story-page-container {
@@ -241,7 +249,6 @@
         flex-wrap: wrap; 
         display: block; 
         /* Add box-sizing to prevent padding from increasing the width */
-        box-sizing: border-box; 
     }
 
     /* --- Content Box --- */
@@ -249,21 +256,18 @@
         width: 100%; 
         min-width: 100%; 
         margin: 10px 0; 
-        padding: 15px; /* <- This is where your padding should be */
-        box-sizing: border-box; 
-    }
+        padding: 10px; /* <- This is where your padding should be */
 
     /* --- Sidebars (Main Sidebar & Story Nav Sidebar) --- */
     .sidebar, .story-nav-sidebar {
-        width: 100%; /* Force sidebars to take full width */
-        margin: 15px 0; /* Separate them vertically */
-        padding: 15px; /* Smaller internal padding */
+        width: 100%; 
+        /* Remove margin that could be pushing the edge */
+        margin-left: 0; 
+        margin-right: 0;
+        margin: 15px auto; /* Center the element vertically */
         
-        /* Remove fixed height and sticky positioning */
-        height: auto; 
-        position: static; 
-        max-height: none; 
-        overflow-y: visible;
+        /* Give it some breathing room inside its 100% width */
+        padding: 15px;
         
         box-shadow: none; /* Remove heavy shadows on mobile */
     }
@@ -274,11 +278,5 @@
     }
 
     /* --- Header Navigation (Reduce padding) --- */
-    .main-header, .main-footer {
-        width: 100%;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        /* Force the box model to include padding within the width */
-        box-sizing: border-box; 
-    }
+    
 }

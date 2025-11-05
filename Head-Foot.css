@@ -171,11 +171,19 @@ animation-name: color-blink;
 @media screen and (max-width: 768px) {
     
     /* --- Header Content --- */
+	.main-header, .main-footer {
+        width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        /* Force the box model to include padding within the width */
+        box-sizing: border-box; 
+    }
+	
     .header-content {
         /* Allow logo and nav to stack if they get too wide */
         flex-wrap: wrap; 
         justify-content: center; /* Center items when stacked */
-        padding: 5px 0;
+		padding: 5px 10px;
     }
     
     .header-logo {
@@ -202,7 +210,7 @@ animation-name: color-blink;
     
     /* --- Banner Box (Marquee) --- */
     .banner-box {
-        padding: 5px 10px;
+        padding: 5px 0;
     }
     
     /* Reduce marquee's required width to give space to the close button */
