@@ -227,3 +227,59 @@
     font-size: 1.2em;
     font-weight: 500;
 }
+
+/* ======================================================= */
+/* 📱 Mobile Responsiveness (Screen width <= 768px) 📱 */
+/* ======================================================= */
+@media screen and (max-width: 768px) {
+
+    /* --- General Page Containers --- */
+    .page-container, .story-page-container {
+        /* Remove max-width limit and excess padding on very small screens */
+        max-width: 100%;
+        padding: 0 10px; /* Smaller side padding for mobile */
+        flex-wrap: wrap; /* Allows the content and sidebars to stack vertically */
+        display: block; /* Simplifies layout to stacking */
+    }
+
+    /* --- Content Box --- */
+    .content-box {
+        width: auto; /* Remove the fixed 690px width */
+        min-width: 100%; /* Ensure it takes full width of the container */
+        margin: 10px 0; /* Adjust vertical margin */
+        padding: 15px; /* Smaller padding inside the box */
+        /* Flex properties are no longer needed as the container is now 'display: block' */
+        flex-grow: unset; 
+        flex-shrink: unset;
+    }
+
+    /* --- Sidebars (Main Sidebar & Story Nav Sidebar) --- */
+    .sidebar, .story-nav-sidebar {
+        width: 100%; /* Force sidebars to take full width */
+        margin: 15px 0; /* Separate them vertically */
+        padding: 15px; /* Smaller internal padding */
+        
+        /* Remove fixed height and sticky positioning */
+        height: auto; 
+        position: static; 
+        max-height: none; 
+        overflow-y: visible;
+        
+        box-shadow: none; /* Remove heavy shadows on mobile */
+    }
+    
+    /* --- Sidebar Spacer (No longer needed on mobile) --- */
+    .spacer-div {
+        display: none; /* Hide the spacer div entirely */
+    }
+
+    /* --- Header Navigation (Reduce padding) --- */
+    .main-header {
+        padding: 0 10px;
+    }
+    
+    /* --- Footer --- */
+    .main-footer {
+        padding: 20px 10px;
+    }
+}

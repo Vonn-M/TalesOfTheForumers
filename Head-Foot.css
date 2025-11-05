@@ -164,3 +164,55 @@ animation-name: color-blink;
     width: auto;
     display: block; /* Helps with alignment */
 }
+
+/* ======================================================= */
+/* 📱 Mobile Responsiveness (Screen width <= 768px) 📱 */
+/* ======================================================= */
+@media screen and (max-width: 768px) {
+    
+    /* --- Header Content --- */
+    .header-content {
+        /* Allow logo and nav to stack if they get too wide */
+        flex-wrap: wrap; 
+        justify-content: center; /* Center items when stacked */
+        padding: 5px 0;
+    }
+    
+    .header-logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    /* Center the navigation links when they stack */
+    nav {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links {
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    /* Reduce space between nav items */
+    .nav-links li {
+        margin: 0 10px; 
+    }
+    
+    /* --- Banner Box (Marquee) --- */
+    .banner-box {
+        padding: 5px 10px;
+    }
+    
+    /* Reduce marquee's required width to give space to the close button */
+    marquee {
+        min-width: 60%;
+        font-size: 0.9em; /* Shrink text slightly */
+    }
+    
+    .close-btn {
+        /* Ensure the close button is still accessible */
+        margin-right: 5px;
+    }
+}
