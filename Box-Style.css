@@ -243,12 +243,12 @@
 
     /* --- General Page Containers --- */
     .page-container, .story-page-container {
-        max-width: 100%;
-        /* Change padding to 0, and use padding inside the individual boxes instead */
-        padding: 0; 
-        flex-wrap: wrap; 
-        display: block; 
-        /* Add box-sizing to prevent padding from increasing the width */
+        display: block; /* Ensure the flex behavior is completely removed for stacking */
+        flex-wrap: nowrap; /* Prevent any flex properties from lingering */
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     /* --- Content Box --- */
@@ -262,15 +262,15 @@
 	}
 	
     .sidebar, .story-nav-sidebar {
-        width: 100%; 
-        margin: 15px auto; 
-        padding: 15px;
-        box-sizing: border-box; 
-        
+        /* This is the guaranteed stickiness removal: */
         position: static !important; 
-        top: auto !important; /* Reset the position boundary */
+        top: auto !important; 
         
-        height: auto !important; 
+        /* Reset any conflicting width/margin that could cause horizontal scroll */
+        width: 100%;
+        margin: 15px 0 !important; /* Force no side margins */
+        box-sizing: border-box;
+        height: auto !important;
         max-height: none;
     }
     
