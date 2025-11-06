@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-74YNPKHETX"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-74YNPKHETX');
+			</script>
+			
+			
+		<link rel="icon" type="image/x-icon" href="TOFLFAV.ico">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+		<title>TOtF -- [C]ollection Number-[S]tory Number-Story Title</title>
+		<link rel="stylesheet" href="ArialCSS.css">
+		<link rel="stylesheet" href="CenteredText.css">
+		<link rel="stylesheet" href="Marck-Script.css">
+		<link rel="stylesheet" href="Box-Style.css">
+		<link rel="stylesheet" href="Head-Foot.css">
+		<link rel="stylesheet" href="Page-Styles.css">
+		<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+    <header class="main-header">
+			<div class="site-width-limiter">
+        
+			<div class="header-content"> 
+            
+				<a href="index.html" class="header-logo">
+					<img src="TOtFLogo.png" alt="Tales of the Forumers Logo">
+				</a>
+            
+				<nav>
+					<ul class="nav-links">
+						<li><a href="index.html">🏠 Home</a></li>
+						<li><a href="About.html">ℹ️ About TOF</a></li>
+						<li><a href="BookCollectionsGallery.html" class="active-nav">📚 Book Collections</a></li>
+					</ul>
+            </nav>
+            
+			</div>
+        
+		</div>
+	</header>
+    
+    <div class="story-page-container">
+        
+		<div class="story-nav-sidebar">
+        <h3 class="center-text">Tales of Thier Past</h3>
+        <p class="collection-title">Collection Chapters:</p>
+        <ul class="collection-nav-links">
+            <li><a href="TOF11Micah.html" class="active-story">➡️ Story 1: Micah</a></li> 
+            <!--<li><a href="story2.html">Story 2: Bino</a></li>
+            <li><a href="story3.html">Story 3: Vonn</a></li>
+			-->
+            <hr>
+            <li><a href="BookCollectionsGallery.html">« Back to Collections</a></li>
+        </ul>
+		</div>
+		
+       <div class="content-box">
+    
+    <div class="center-text">
+        <p class="chapter-info">Book Collection Name | Story (Story Number)</p>
+    </div>
+
+    <div class="reading-box">
+        
+        <div class="center-text"> 
+            <h1 class="marck-script-regular">Tales of the Forumers: Name of Story</h1>
+            <h2 class="chapter-subtitle">Short Description</h2>
+            <hr class="story-divider">
+        </div>
+        
+        <p class="story-paragraph drop-cap-big">
+			First Paragraph
+        </p>
+		
+
+        <p class="story-paragraph drop-cap">
+			Other Paragraphs (Duplicate for More Paragraphs)
+        </p>
+		
+		<div class="like-container">
+			<button id="likeButton" class="like-btn">
+				<span class="heart-icon">👍</span> Like
+			</button>
+		<span id="likeCount" class="like-counter">0</span>
+	</div>
+		
+		<div class="chapter-nav-bar">
+        
+        <span class="nav-title">
+            Story (Story Number)
+        </span>
+        
+        <a href="" class="nav-link">
+            Next Story &raquo;
+        </a>
+    </div>
+        
+     </div> 
+		
+	<div class="comments-section-wrapper">
+        <h2>Comments</h2>
+        
+        <script src="https://utteranc.es/client.js"
+                repo="Vonn-M/TalesOfTheForumers-Comments"
+                issue-term="pathname"
+                theme="github-dark" 
+                crossorigin="anonymous"
+                async>
+        </script>
+    </div>
+		
+    </div>
+        	
+		
+        <div class="sidebar">
+                <h2 class="center-text">Main TTF Books</h2>
+                <h4 class="center-text"><b>Click on These Links to go to the Main TTF Stories Blog Page!</b></h4>
+				<h4 class="center-text">Book One: Reign of the Motorcycles</h4>
+                <ul class="sidebar-links">
+                    <li><a href="https://maythefaithbewithu.wordpress.com/ttf-book-1-chapters-1-5/">Chapters 1-4</a></li>
+                    <li><a href="https://maythefaithbewithu.wordpress.com/ttf-book-1-chapters-5-9/">Chapters 5-9</a></li>
+                </ul>
+				<br>
+				<h3 class="center-text">News</h3>
+            </div>
+        
+    </div>
+    
+    <footer class="main-footer">
+        <p>The Traveling Forumers Copyright &copy; 2025 VonnM and JackyC - Tales of the Forumers Copyright &copy; 2025 VonnM</p>
+    </footer>
+	
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script> 
+
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+ 
+<script>
+  // Your web app's Firebase configuration (PASTE YOUR CONFIG HERE)
+  const firebaseConfig = {
+    apiKey: "AIzaSyCHN3VMBYsoMuZgD1NL41bprKNroge8IXM",
+    authDomain: "talesoftheforumerslikes.firebaseapp.com",
+    projectId: "talesoftheforumerslikes",
+    storageBucket: "talesoftheforumerslikes.firebasestorage.app",
+    messagingSenderId: "903407290171",
+    appId: "1:903407290171:web:08e4c07f6154e1599d591e"
+  };
+
+  // Initialize Firebase App
+  const app = firebase.initializeApp(firebaseConfig);
+
+  // Define 'db' globally using 'var' or simply by assigning it without 'let' or 'const' 
+  // outside of a function, but 'const' works if it's outside any other scope.
+  const db = app.firestore(); 
+</script>
+
+<script src="Like-Button.js"></script>
+</body>
+</html>
