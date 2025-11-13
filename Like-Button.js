@@ -3,7 +3,16 @@
 
 const likeButton = document.getElementById('likeButton');
 const likeCountSpan = document.getElementById('likeCount');
-const pageId = window.location.pathname.split('/').pop().replace(/\.html/g, '');
+const pathSegments = window.location.pathname.split('/').filter(segment => segment);
+
+// Get the last meaningful segment (which is the chapter/page folder name, 
+// e.g., 'TOF11Micah' from the URL path)
+let pageId = pathSegments[pathSegments.length - 1] || 'homepage';
+
+// If the page is the root index (e.g., 'homepage'), ensure the ID is unique
+if (pageId === 'TalesOfTheForumers' || pageId === '') {
+    pageId = 'homepage'; 
+}
 
 // Key for Local Storage to prevent repeated clicks from the same user
 const likedFlagKey = pageId + '-liked';

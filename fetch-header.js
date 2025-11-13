@@ -39,31 +39,42 @@ function highlightActiveStory() {
 }
 
 function highlightActiveNav() {
-    // 1. Get the current page's URL pathname (e.g., /TalesOfTheForumers/about.html)
-    const currentPathname = window.location.pathname;
+    // Current path is usually /repo-name/folder/subfolder/
+    const currentPathname = window.location.pathname; 
+    
+    // Normalize the path by removing the trailing slash and repo name
+    // Example: /TalesOfTheForumers/BookCollectionsGallery/  ->  BookCollectionsGallery
+    const normalizedCurrentPath = currentPathname
+        .replace(/\/$/, '') // Remove trailing slash
+        .split('/')
+        .pop(); // Get the last segment (e.g., TOF11Micah, or BookCollectionsGallery)
+    
+    // Safety check for the root home page
+    const isHomePage = currentPathname === '/TalesOfTheForumers/' || currentPathname === '/';
 
-    // 2. Find all navigation links in the header
     const navLinks = document.querySelectorAll('.nav-links a');
 
     navLinks.forEach(link => {
-        // Get the link's href (e.g., index.html or about.html)
-        const linkHref = link.getAttribute('href');
+        const linkHref = link.getAttribute('href'); 
         
-        // 3. Compare the current URL with the link's href
-        // We use .includes() for the home page (index.html or just /) and endsWith() for others.
+        // 1. Remove ALL previously applied active-nav classes
+        link.classList.remove('active-nav'); 
 
-        // A. Handle the Home Page
-        if (linkHref === '/' && currentPathname.endsWith('/')) {
+        // 2. Check for the Home Page (if the link is just '/')
+        if (linkHref === '/' && isHomePage) {
             link.classList.add('active-nav');
-            return; // Stop checking other links
+            return;
         }
 
-        // B. Handle all other pages (e.g., about.html, gallery.html)
-        if (currentPathname.endsWith(linkHref)) {
-            link.classList.add('active-nav');
-        } else {
-            // Safety check: remove the class if the link is not active
-            link.classList.remove('active-nav'); 
+        // 3. Check for exact matches (e.g., /about/ should match only the about page)
+        // Normalize the link's href for a clean comparison
+        const normalizedLinkHref = linkHref.replace(/\/$/, ''); // Remove trailing slash
+        
+        // This makes sure the path is an EXACT match (not just an inclusion)
+        if (normalizedCurrentPath === normalizedLinkHref.split('/').pop()) {
+             // Re-verify that the full current path DOES NOT contain the link's href 
+             // as a sub-path, unless it's the specific target.
+             link.classList.add('active-nav');
         }
     });
 }
