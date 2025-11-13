@@ -17,22 +17,36 @@ function injectHTML(fileName, elementId) {
 }
 
 function highlightActiveStory() {
-    // Current URL pathname (e.g., /TalesOfTheForumers/TOF11Micah/)
+    // 1. Normalize the current URL to the last segment (e.g., 'TOF11Micah' if the URL ends in /TOF11Micah/)
     const currentPathname = window.location.pathname;
+    
+    // Remove the trailing slash and split by /. The last segment is the page's identifier.
+    // Example: /.../BCollection1/TOF11Micah/ -> ['...','BCollection1','TOF11Micah',''] -> last segment is 'TOF11Micah'
+    const normalizedCurrentPathSegment = currentPathname
+        .replace(/\/$/, '') // Remove trailing slash
+        .split('/')
+        .pop(); 
 
     const navLinks = document.querySelectorAll('.story-nav-sidebar a');
 
+    // CRITICAL: Remove all active classes before starting the loop
+    const currentlyActive = document.querySelector('.story-nav-sidebar .active-story');
+    if (currentlyActive) {
+        currentlyActive.classList.remove('active-story');
+    }
+    
     navLinks.forEach(link => {
-        // Link's href attribute (e.g., TOF11Micah/)
         const linkHref = link.getAttribute('href'); 
         
-        // Check if the current path includes the link's folder name
-        if (currentPathname.includes(linkHref) && linkHref !== '/') {
-            // Remove/add active class
-            const currentlyActive = document.querySelector('.active-story');
-            if (currentlyActive) {
-                currentlyActive.classList.remove('active-story');
-            }
+        // 2. Normalize the link's href to its last segment
+        // Example: BookCollectionsGallery/BCollection1/TOF11Micah/ -> 'TOF11Micah'
+        const linkPathSegment = linkHref
+            .replace(/\/$/, '') // Remove trailing slash
+            .split('/')
+            .pop();
+        
+        // 3. Compare the two isolated segments for an EXACT match
+        if (linkPathSegment === normalizedCurrentPathSegment && linkPathSegment !== '') {
             link.classList.add('active-story');
         } 
     });
@@ -81,37 +95,28 @@ function highlightActiveNav() {
 
 // Run the function for all global and reusable content
 function loadGlobalContent() {
-    // Inject the Header and Footer first (order doesn't matter much for these)
-    injectHTML('header.html', 'global-header-placeholder');
+    // 1. Inject Header (and save the promise)
+    const headerLoad = injectHTML('header.html', 'global-header-placeholder'); 
+    
+    // 2. Inject Footer
     injectHTML('footer.html', 'global-footer-placeholder');
 
-    // ----------------------------------------------------------------------
-    // CRITICAL FIX: Use the Promise returned by injectHTML for the sidebar
-    // ----------------------------------------------------------------------
-    
-    // 1. Inject the Main Sidebar
+    // 3. Inject Sidebars (and save promises)
     const mainSidebarLoad = injectHTML('main-sidebar.html', 'main-sidebar-placeholder');
-    
-    // 2. Inject the Story Navigation Sidebar
     const storyNavLoad = injectHTML('story-nav-sidebar.html', 'story-nav-sidebar-placeholder');
 
-    // Wait for BOTH sidebars to load (just in case they both exist on the page)
+    // Wait for the elements to load before highlighting
+    headerLoad.then(() => {
+        highlightActiveNav();
+    });
+    
     Promise.all([mainSidebarLoad, storyNavLoad])
         .then(() => {
-            // This code runs ONLY after the HTML injection is complete.
-            // Now, we can safely find the links and apply the active class.
             highlightActiveStory();
         })
         .catch(error => {
             console.error("Error during sidebar injection/highlighting:", error);
         });
-
-        const headerLoad = injectHTML('header.html', 'global-header-placeholder');
-
-    // After the header is successfully loaded:
-    headerLoad.then(() => {
-        highlightActiveNav(); // <-- Run the new function
-    });
 }
 
 // Run the function when the page loads
