@@ -126,7 +126,7 @@
 
 .story-nav-sidebar {
 
-    width: 243px; 
+    width: 243px !important;
     flex-shrink: 0;
     
 	
@@ -146,8 +146,8 @@
     position: sticky;
     top: 30px; 
 
-    height: auto; 
-    max-height: 80vh;
+    height: 800px; 
+    max-height: 80vh; 
     overflow-y: auto;
 }
 

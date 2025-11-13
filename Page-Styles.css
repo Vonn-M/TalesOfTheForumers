@@ -1,3 +1,20 @@
+.collection-nav-links a:hover {
+    background-color: #444444;
+    color: #01C8FF;
+
+    border-bottom: 2px solid #444444 !important;
+}
+
+/* Check your active/highlighted class */
+.active-story, 
+.collection-nav-links a.active-story {
+    /* If this rule adds a border or changes padding, it will cause the element to shift */
+    
+    padding: 8px 10px; /* If the padding is different from the default state, it shifts */
+    
+    /* The yellow bottom line might be a border-bottom, which is generally safe: */
+    border-bottom: 2px solid #FFD700;
+}
 
 .fancy-hr {
     border: none;

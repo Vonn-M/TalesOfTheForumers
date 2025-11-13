@@ -122,6 +122,12 @@ animation-name: color-blink;
     color: #ffffff;
 }
 
+/* Ensure the active-nav class is styling the link (a) tag */
+.nav-links a.active-nav {
+    border-bottom: 2px solid #FFD700; /* Gold underline for the active page */
+    padding-bottom: 2px;
+}
+
 /* Footer Code */
 
 .main-footer {
