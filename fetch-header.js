@@ -1,3 +1,13 @@
+function normalizePath(path) {
+    // 1. Remove the repository name (case-insensitive)
+    let cleanPath = path.replace(/\/talesoftheforumers\//i, '/');
+    
+    // 2. Remove any leading/trailing slashes, resulting in a clean string
+    cleanPath = cleanPath.replace(/^\/|\/$/g, '');
+    
+    return cleanPath;
+}
+
 function injectHTML(fileName, elementId) {
     const placeholder = document.getElementById(elementId);
     
@@ -16,16 +26,6 @@ function injectHTML(fileName, elementId) {
     return Promise.resolve(); 
 }
 
-// Helper function to normalize a URL path for comparison
-function normalizePath(path) {
-    // 1. Remove the repository name (case-insensitive)
-    let cleanPath = path.replace(/\/talesoftheforumers\//i, '/');
-    
-    // 2. Remove any leading/trailing slashes, resulting in a clean string
-    cleanPath = cleanPath.replace(/^\/|\/$/g, '');
-    
-    return cleanPath;
-}
 
 
 function highlightActiveStory() {
@@ -65,43 +65,44 @@ function highlightActiveStory() {
         } 
     });
 }
-function highlightActiveNav() {
-    // Current path is usually /repo-name/folder/subfolder/
-    const currentPathname = window.location.pathname; 
-    
-    // Normalize the path by removing the trailing slash and repo name
-    // Example: /TalesOfTheForumers/BookCollectionsGallery/  ->  BookCollectionsGallery
-    const normalizedCurrentPath = currentPathname
-        .replace(/\/$/, '') // Remove trailing slash
-        .split('/')
-        .pop(); // Get the last segment (e.g., TOF11Micah, or BookCollectionsGallery)
-    
-    // Safety check for the root home page
-    const isHomePage = currentPathname === '/TalesOfTheForumers/' || currentPathname === '/';
 
+function highlightActiveNav() {
+    // 1. Get the current page's normalized path
+    const currentPathname = window.location.pathname;
+    const cleanCurrentPath = normalizePath(currentPathname); // Example: "BookCollectionsGallery/BCollection1/TOF11Micah"
+    
     const navLinks = document.querySelectorAll('.nav-links a');
 
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href'); 
         
-        // 1. Remove ALL previously applied active-nav classes
+        // Always remove the class first
         link.classList.remove('active-nav'); 
+        
+        // 2. Get the link's normalized path
+        // Use a temporary anchor to resolve relative links if necessary, and then clean.
+        const tempAnchor = document.createElement('a');
+        tempAnchor.href = linkHref;
+        const cleanLinkPath = normalizePath(tempAnchor.pathname); // Example: "BookCollectionsGallery" or "about"
 
-        // 2. Check for the Home Page (if the link is just '/')
-        if (linkHref === '/' && isHomePage) {
+        // --- Highlight Logic ---
+
+        // A. Home Page Check (Link is '/')
+        if (linkHref === '/' && currentPathname.replace(/\/$/, '') === '/TalesOfTheForumers') {
             link.classList.add('active-nav');
             return;
         }
 
-        // 3. Check for exact matches (e.g., /about/ should match only the about page)
-        // Normalize the link's href for a clean comparison
-        const normalizedLinkHref = linkHref.replace(/\/$/, ''); // Remove trailing slash
+        // B. Top-Level Page Check (Perfect Match)
+        if (cleanCurrentPath === cleanLinkPath) {
+            link.classList.add('active-nav');
+            return;
+        }
         
-        // This makes sure the path is an EXACT match (not just an inclusion)
-        if (normalizedCurrentPath === normalizedLinkHref.split('/').pop()) {
-             // Re-verify that the full current path DOES NOT contain the link's href 
-             // as a sub-path, unless it's the specific target.
-             link.classList.add('active-nav');
+        // C. Sub-Page Check (Does the current path START with the link's path?)
+        // This makes sure the "BookCollectionsGallery" link is highlighted when you are on a chapter sub-page.
+        if (cleanCurrentPath.startsWith(cleanLinkPath) && cleanLinkPath !== '') {
+            link.classList.add('active-nav');
         }
     });
 }
