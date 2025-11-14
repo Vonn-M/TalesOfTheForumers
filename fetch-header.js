@@ -16,15 +16,23 @@ function injectHTML(fileName, elementId) {
     return Promise.resolve(); 
 }
 
-function highlightActiveStory() {
-    // 1. Get the current page's full path (e.g., /TalesOfTheForumers/BookCollectionsGallery/BCollection1/TOF11Micah/)
-    const currentPathname = window.location.pathname;
+function normalizePath(path) {
+    // 1. Remove the repository name (case-insensitive)
+    // The path should now start with just a single slash: /BookCollectionsGallery/BCollection1/TOF11Micah/
+    let cleanPath = path.replace(/\/talesoftheforumers\//i, '/');
     
-    // Normalize the current path by removing the repository name and trailing slash for clean comparison
-    // Assuming your repo name is 'TalesOfTheForumers'
-    const cleanCurrentPath = currentPathname
-        .replace(/\/TalesOfTheForumers\//i, '/') // Replace repo name with a single slash
-        .replace(/\/$/, ''); // Remove trailing slash
+    // 2. Remove any leading/trailing slashes, resulting in a clean string
+    // Result: BookCollectionsGallery/BCollection1/TOF11Micah
+    cleanPath = cleanPath.replace(/^\/|\/$/g, '');
+    
+    return cleanPath;
+}
+
+
+function highlightActiveStory() {
+    // A. Get the current page's normalized path
+    const currentPathname = window.location.pathname;
+    const cleanCurrentPath = normalizePath(currentPathname); // e.g., "BookCollectionsGallery/BCollection1/TOF11Micah"
 
     const navLinks = document.querySelectorAll('.story-nav-sidebar a');
 
@@ -37,23 +45,16 @@ function highlightActiveStory() {
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href'); 
         
-        // Normalize the link's href (it's often a relative path like ../../)
-        // We use a temporary anchor element to resolve the relative path to an absolute path.
+        // B. Get the link's normalized path
+        // Use a temporary anchor to resolve relative links (like '../') if they exist
         const tempAnchor = document.createElement('a');
         tempAnchor.href = linkHref;
+        const cleanLinkPath = normalizePath(tempAnchor.pathname); // e.g., "BookCollectionsGallery" or "BookCollectionsGallery/BCollection1/TOF11Micah"
         
-        // Get the resolved, clean path of the link (e.g., /BookCollectionsGallery/BCollection1/)
-        const cleanLinkPath = tempAnchor.pathname
-            .replace(/\/TalesOfTheForumers\//i, '/')
-            .replace(/\/$/, '');
-
-        // 3. Compare the cleaned full paths
-        // Check for an EXACT match. A chapter link MUST NOT be a parent of the current page.
-        if (cleanCurrentPath === cleanLinkPath) {
+        // 3. Compare the two cleaned strings for an EXACT match
+        if (cleanCurrentPath === cleanLinkPath && cleanCurrentPath !== '') {
             link.classList.add('active-story');
-        } else {
-             link.classList.remove('active-story');
-        }
+        } 
     });
 }
 
