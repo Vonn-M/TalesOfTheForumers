@@ -52,37 +52,44 @@ function highlightActiveStory() {
     });
 }
 
-function highlightActiveStory() {
-    const currentPathname = window.location.pathname;
+function highlightActiveNav() {
+    // Current path is usually /repo-name/folder/subfolder/
+    const currentPathname = window.location.pathname; 
     
-    // 1. Get the last segment of the current URL (e.g., 'TOF11Micah')
-    const normalizedCurrentPathSegment = currentPathname
-        .replace(/\/$/, '') 
+    // Normalize the path by removing the trailing slash and repo name
+    // Example: /TalesOfTheForumers/BookCollectionsGallery/  ->  BookCollectionsGallery
+    const normalizedCurrentPath = currentPathname
+        .replace(/\/$/, '') // Remove trailing slash
         .split('/')
-        .pop(); 
+        .pop(); // Get the last segment (e.g., TOF11Micah, or BookCollectionsGallery)
+    
+    // Safety check for the root home page
+    const isHomePage = currentPathname === '/TalesOfTheForumers/' || currentPathname === '/';
 
-    const navLinks = document.querySelectorAll('.story-nav-sidebar a');
-
-    // CRITICAL: Remove all active classes before starting the loop
-    // Find all links in the sidebar that have the class and remove it.
-    navLinks.forEach(link => {
-        link.classList.remove('active-story');
-    });
+    const navLinks = document.querySelectorAll('.nav-links a');
 
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href'); 
         
-        // 2. Get the last segment of the link's href (e.g., 'TOF11Micah')
-        const linkPathSegment = linkHref
-            .replace(/\/$/, '') 
-            .split('/')
-            .pop();
+        // 1. Remove ALL previously applied active-nav classes
+        link.classList.remove('active-nav'); 
+
+        // 2. Check for the Home Page (if the link is just '/')
+        if (linkHref === '/' && isHomePage) {
+            link.classList.add('active-nav');
+            return;
+        }
+
+        // 3. Check for exact matches (e.g., /about/ should match only the about page)
+        // Normalize the link's href for a clean comparison
+        const normalizedLinkHref = linkHref.replace(/\/$/, ''); // Remove trailing slash
         
-        // 3. Compare the two isolated segments for an EXACT match
-        // We ensure the link is NOT the immediate parent link that links backwards.
-        if (linkPathSegment === normalizedCurrentPathSegment && linkPathSegment !== '') {
-            link.classList.add('active-story');
-        } 
+        // This makes sure the path is an EXACT match (not just an inclusion)
+        if (normalizedCurrentPath === normalizedLinkHref.split('/').pop()) {
+             // Re-verify that the full current path DOES NOT contain the link's href 
+             // as a sub-path, unless it's the specific target.
+             link.classList.add('active-nav');
+        }
     });
 }
 
