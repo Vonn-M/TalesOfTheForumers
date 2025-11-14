@@ -16,13 +16,12 @@ function injectHTML(fileName, elementId) {
     return Promise.resolve(); 
 }
 
+// Helper function to normalize a URL path for comparison
 function normalizePath(path) {
     // 1. Remove the repository name (case-insensitive)
-    // The path should now start with just a single slash: /BookCollectionsGallery/BCollection1/TOF11Micah/
     let cleanPath = path.replace(/\/talesoftheforumers\//i, '/');
     
     // 2. Remove any leading/trailing slashes, resulting in a clean string
-    // Result: BookCollectionsGallery/BCollection1/TOF11Micah
     cleanPath = cleanPath.replace(/^\/|\/$/g, '');
     
     return cleanPath;
@@ -32,7 +31,7 @@ function normalizePath(path) {
 function highlightActiveStory() {
     // A. Get the current page's normalized path
     const currentPathname = window.location.pathname;
-    const cleanCurrentPath = normalizePath(currentPathname); // e.g., "BookCollectionsGallery/BCollection1/TOF11Micah"
+    const cleanCurrentPath = normalizePath(currentPathname); 
 
     const navLinks = document.querySelectorAll('.story-nav-sidebar a');
 
@@ -42,22 +41,30 @@ function highlightActiveStory() {
         currentlyActive.classList.remove('active-story');
     }
     
+    // Define the specific path for the Collections Gallery page (parent)
+    const collectionsGalleryPath = 'BookCollectionsGallery'; 
+    
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href'); 
         
         // B. Get the link's normalized path
-        // Use a temporary anchor to resolve relative links (like '../') if they exist
         const tempAnchor = document.createElement('a');
         tempAnchor.href = linkHref;
-        const cleanLinkPath = normalizePath(tempAnchor.pathname); // e.g., "BookCollectionsGallery" or "BookCollectionsGallery/BCollection1/TOF11Micah"
-        
+        const cleanLinkPath = normalizePath(tempAnchor.pathname); 
+
         // 3. Compare the two cleaned strings for an EXACT match
         if (cleanCurrentPath === cleanLinkPath && cleanCurrentPath !== '') {
+            
+            // **NEW EXCLUSION RULE:** // Do NOT highlight the "Back to Collections" link if we are on the collections page itself.
+            if (cleanLinkPath === collectionsGalleryPath) {
+                // If the link is the "Back to Collections" link AND the current page is the collections page, skip highlighting.
+                return; 
+            }
+            
             link.classList.add('active-story');
         } 
     });
 }
-
 function highlightActiveNav() {
     // Current path is usually /repo-name/folder/subfolder/
     const currentPathname = window.location.pathname; 
