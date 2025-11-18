@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!DOCTYPE html>
+<html>
+<body>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
         <loc>https://vonn-m.github.io/TalesOfTheForumers/</loc>
@@ -23,17 +26,20 @@
     </url>
 
     <url>
-        <loc>https://vonn-m.github.io/TalesOfTheForumers/BookCollectionsGallery/BCollection1/</loc>
+        <loc>https://vonn-m.github.io/TalesOfTheForumers/BookCollectionsGallery/SCollection1/</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://vonn-m.github.io/TalesOfTheForumers/BookCollectionsGallery/BCollection1/TOF11Micah/</loc>
+        <loc>https://vonn-m.github.io/TalesOfTheForumers/BookCollectionsGallery/SCollection1/TOF11Micah/</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     
     </urlset>
+
+</body>
+</html>

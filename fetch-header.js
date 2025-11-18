@@ -69,7 +69,7 @@ function highlightActiveStory() {
 function highlightActiveNav() {
     // 1. Get the current page's normalized path
     const currentPathname = window.location.pathname;
-    const cleanCurrentPath = normalizePath(currentPathname); // Example: "BookCollectionsGallery/BCollection1/TOF11Micah"
+    const cleanCurrentPath = normalizePath(currentPathname); // Example: "BookCollectionsGallery/SCollection1/TOF11Micah"
     
     const navLinks = document.querySelectorAll('.nav-links a');
 
