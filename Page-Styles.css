@@ -276,7 +276,7 @@
 
 .story-paragraph-small {
     /* Standard paragraph style for reading */
-    font-size: 0.8em;
+    font-size: 0.95em;
     line-height: 1.8;
     margin-bottom: 20px;
     text-align: justify; /* Helps with a professional, printed-page look */
